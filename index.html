@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .div{
+        border:3px solid black
+      }
+    </style>
+</head>
+<body>
+    <h1>Place of Missles</h1><div id="miss"></div>
+    <script>
+        fetch("https://localhost:7264/Missile",{
+            mode: 'no-cors'}).then(Response=>Response.json()).then((json)=>{
+         
+          for (let i = 0; i <Object.keys(json).length; i++) {
+            let div=document.createElement("div")
+            div.setAttribute("class","div")
+            let p1=document.createElement("p")
+            let p2=document.createElement("p")
+            let p3=document.createElement("p")
+            let p4=document.createElement("p")
+            let p5=document.createElement("p")
+            
+           
+            p1.textContent="patriotmissile: "+json[i] .Patriotmissile
+            p2.textContent="city: "+json[i].Location.city
+            p3.textContent="date: "+json[i].Location.date
+            p4.textContent="end date: "+json[i].Location.endDate
+            p5.textContent="location: "+json[i].Location.location
+            
+            div.appendChild(p1)
+            div.appendChild(p2)
+            div.appendChild(p3)
+            div.appendChild(p4)
+            div.appendChild(p5)
+            document.getElementById("miss").appendChild(div) 
+          }
+        })
+    </script>
+</body>
+</html>
